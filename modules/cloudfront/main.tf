@@ -1,16 +1,3 @@
-#provider.alias 사용하기 위해 선언 필요
-#terraform {
-#  required_providers {
-#    aws = {
-#      source  = "hashicorp/aws"
-#      version = ">= 6.0"
-#    }
-#  }
-#}
-
-
-
-
 ###<CloudFront>
 #cloudfront 배포 생성
 resource "aws_cloudfront_distribution" "tf-cloudfront" {
