@@ -60,7 +60,7 @@ module "rds" {
 
 module "cloudfront" { 
   source = "./modules/cloudfront"
-  providers = { aws = aws.us_east_1 } 
+ #providers = { aws = aws.us_east_1 }   #cloudfront는 글로벌 리소스이기 때문에 필요없음
   project_name = var.project_name
   alb_dns_name = module.compute.alb_dns_name
   ssl_cert_arn = module.route53.ssl_cert_arn
@@ -70,7 +70,7 @@ module "cloudfront" {
 
 module "route53" {
   source = "./modules/route53"
-  providers = { aws = aws.us_east_1 } 
+  providers = { aws = aws.us_east_1 }   #provider.alias 리전 지정
   domain_name = var.domain_name
   cloudfront_domain_name = module.cloudfront.cloudfront_domain_name
   cloudfront_hosted_zone_id = module.cloudfront.cloudfront_hosted_zone_id

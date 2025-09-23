@@ -61,7 +61,7 @@ resource "aws_db_parameter_group" "mysql8_pg" {
   tags = { Name = "mysql8-custom-parameter-group" }
 }
 
-#RDS (앞서 만든 서브넷그룹, 파라미터그룹, RDS보안그룹을 참조하여 RDS 생성)
+#RDS 인스턴스(앞서 만든 서브넷그룹, 파라미터그룹, RDS보안그룹을 참조하여 생성)
 resource "aws_db_instance" "tf-db" { 
   engine = "mysql"
   engine_version = "8.0"

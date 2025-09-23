@@ -1,0 +1,2015 @@
+{
+  "version": 4,
+  "terraform_version": "1.5.5",
+  "serial": 1347,
+  "lineage": "149df90c-c4a1-99ca-a047-c0177f4bcfe7",
+  "outputs": {
+    "alb_dns_name": {
+      "value": "my-tf-project-alb-284059041.ap-northeast-2.elb.amazonaws.com",
+      "type": "string"
+    },
+    "bucket_name": {
+      "value": "my-tf-project-rlfrjs3-bucket",
+      "type": "string"
+    },
+    "db_instance_endpoint": {
+      "value": "my-tf-project-rds.chexn3gvtuuj.ap-northeast-2.rds.amazonaws.com:3306",
+      "type": "string"
+    },
+    "efs_dns_name": {
+      "value": "fs-0465fafe2cde5da99.efs.ap-northeast-2.amazonaws.com",
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "module": "module.cloudfront",
+      "mode": "managed",
+      "type": "aws_cloudfront_distribution",
+      "name": "tf-cloudfront",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "aliases": [
+              "kkangsoju.co.kr",
+              "www.kkangsoju.co.kr"
+            ],
+            "anycast_ip_list_id": "",
+            "arn": "arn:aws:cloudfront::356892573173:distribution/EWYQEJMATA2S5",
+            "caller_reference": "terraform-20250922024229474700000001",
+            "comment": null,
+            "continuous_deployment_policy_id": "",
+            "custom_error_response": [],
+            "default_cache_behavior": [
+              {
+                "allowed_methods": [
+                  "GET",
+                  "HEAD",
+                  "OPTIONS"
+                ],
+                "cache_policy_id": "",
+                "cached_methods": [
+                  "GET",
+                  "HEAD"
+                ],
+                "compress": false,
+                "default_ttl": 300,
+                "field_level_encryption_id": "",
+                "forwarded_values": [
+                  {
+                    "cookies": [
+                      {
+                        "forward": "none",
+                        "whitelisted_names": []
+                      }
+                    ],
+                    "headers": [],
+                    "query_string": false,
+                    "query_string_cache_keys": []
+                  }
+                ],
+                "function_association": [],
+                "grpc_config": [
+                  {
+                    "enabled": false
+                  }
+                ],
+                "lambda_function_association": [],
+                "max_ttl": 3600,
+                "min_ttl": 300,
+                "origin_request_policy_id": "",
+                "realtime_log_config_arn": "",
+                "response_headers_policy_id": "",
+                "smooth_streaming": false,
+                "target_origin_id": "alb_origin",
+                "trusted_key_groups": [],
+                "trusted_signers": [],
+                "viewer_protocol_policy": "redirect-to-https"
+              }
+            ],
+            "default_root_object": "",
+            "domain_name": "d2l09vt7975zhb.cloudfront.net",
+            "enabled": true,
+            "etag": "EAQYBBAU637LR",
+            "hosted_zone_id": "Z2FDTNDATAQYW2",
+            "http_version": "http2",
+            "id": "EWYQEJMATA2S5",
+            "in_progress_validation_batches": 0,
+            "is_ipv6_enabled": false,
+            "last_modified_time": "2025-09-22 02:42:33.712 +0000 UTC",
+            "logging_config": [
+              {
+                "bucket": "my-tf-project-rlfrjs3-bucket.s3.amazonaws.com",
+                "include_cookies": false,
+                "prefix": "cloudfront-log/"
+              }
+            ],
+            "ordered_cache_behavior": [],
+            "origin": [
+              {
+                "connection_attempts": 3,
+                "connection_timeout": 10,
+                "custom_header": [],
+                "custom_origin_config": [
+                  {
+                    "http_port": 80,
+                    "https_port": 443,
+                    "origin_keepalive_timeout": 5,
+                    "origin_protocol_policy": "http-only",
+                    "origin_read_timeout": 30,
+                    "origin_ssl_protocols": [
+                      "TLSv1.2"
+                    ]
+                  }
+                ],
+                "domain_name": "my-tf-project-alb-284059041.ap-northeast-2.elb.amazonaws.com",
+                "origin_access_control_id": "",
+                "origin_id": "alb_origin",
+                "origin_path": "",
+                "origin_shield": [],
+                "s3_origin_config": [],
+                "vpc_origin_config": []
+              }
+            ],
+            "origin_group": [],
+            "price_class": "PriceClass_All",
+            "restrictions": [
+              {
+                "geo_restriction": [
+                  {
+                    "locations": [],
+                    "restriction_type": "none"
+                  }
+                ]
+              }
+            ],
+            "retain_on_delete": false,
+            "staging": false,
+            "status": "Deployed",
+            "tags": {
+              "Name": "my-tf-project-cloudfront"
+            },
+            "tags_all": {
+              "Name": "my-tf-project-cloudfront"
+            },
+            "trusted_key_groups": [
+              {
+                "enabled": false,
+                "items": []
+              }
+            ],
+            "trusted_signers": [
+              {
+                "enabled": false,
+                "items": []
+              }
+            ],
+            "viewer_certificate": [
+              {
+                "acm_certificate_arn": "arn:aws:acm:us-east-1:356892573173:certificate/6dc0b1a2-46e1-41c6-a893-a56c0248da67",
+                "cloudfront_default_certificate": false,
+                "iam_certificate_id": "",
+                "minimum_protocol_version": "TLSv1.2_2019",
+                "ssl_support_method": "sni-only"
+              }
+            ],
+            "wait_for_deployment": true,
+            "web_acl_id": ""
+          },
+          "sensitive_attributes": [],
+          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjEifQ==",
+          "dependencies": [
+            "module.compute.aws_lb.web_alb",
+            "module.network.aws_security_group.web",
+            "module.network.aws_subnet.public",
+            "module.network.aws_vpc.tf-vpc",
+            "module.route53.aws_acm_certificate.ssl_cert",
+            "module.s3.aws_s3_bucket.tf-bucket"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.compute",
+      "mode": "managed",
+      "type": "aws_autoscaling_group",
+      "name": "web_asg",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:autoscaling:ap-northeast-2:356892573173:autoScalingGroup:5732d184-a0da-4831-a095-7589fbf80fcc:autoScalingGroupName/terraform-20250922015638666700000006",
+            "availability_zone_distribution": [
+              {
+                "capacity_distribution_strategy": "balanced-best-effort"
+              }
+            ],
+            "availability_zones": [
+              "ap-northeast-2a",
+              "ap-northeast-2b"
+            ],
+            "capacity_rebalance": false,
+            "capacity_reservation_specification": [
+              {
+                "capacity_reservation_preference": "default",
+                "capacity_reservation_target": []
+              }
+            ],
+            "context": "",
+            "default_cooldown": 300,
+            "default_instance_warmup": 0,
+            "desired_capacity": 4,
+            "desired_capacity_type": "",
+            "enabled_metrics": [],
+            "force_delete": false,
+            "force_delete_warm_pool": false,
+            "health_check_grace_period": 300,
+            "health_check_type": "EC2",
+            "id": "terraform-20250922015638666700000006",
+            "ignore_failed_scaling_activities": false,
+            "initial_lifecycle_hook": [],
+            "instance_maintenance_policy": [],
+            "instance_refresh": [],
+            "launch_configuration": "",
+            "launch_template": [
+              {
+                "id": "lt-07896466c71d6ee91",
+                "name": "my-tf-project-launch-template",
+                "version": "$Latest"
+              }
+            ],
+            "load_balancers": [],
+            "max_instance_lifetime": 0,
+            "max_size": 5,
+            "metrics_granularity": "1Minute",
+            "min_elb_capacity": null,
+            "min_size": 4,
+            "mixed_instances_policy": [],
+            "name": "terraform-20250922015638666700000006",
+            "name_prefix": "terraform-",
+            "placement_group": "",
+            "predicted_capacity": 0,
+            "protect_from_scale_in": false,
+            "region": "ap-northeast-2",
+            "service_linked_role_arn": "arn:aws:iam::356892573173:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling",
+            "suspended_processes": [],
+            "tag": [
+              {
+                "key": "Name",
+                "propagate_at_launch": true,
+                "value": "my-tf-project-web-server"
+              }
+            ],
+            "target_group_arns": [
+              "arn:aws:elasticloadbalancing:ap-northeast-2:356892573173:targetgroup/my-tf-project-tg/9bcfe1bacf213885"
+            ],
+            "termination_policies": [],
+            "timeouts": null,
+            "traffic_source": [
+              {
+                "identifier": "arn:aws:elasticloadbalancing:ap-northeast-2:356892573173:targetgroup/my-tf-project-tg/9bcfe1bacf213885",
+                "type": "elbv2"
+              }
+            ],
+            "vpc_zone_identifier": [
+              "subnet-0270a31b949ab68f7",
+              "subnet-03f182e8f27258d78"
+            ],
+            "wait_for_capacity_timeout": "10m",
+            "wait_for_elb_capacity": null,
+            "warm_pool": [],
+            "warm_pool_size": 0
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiZGVsZXRlIjo2MDAwMDAwMDAwMDAsInVwZGF0ZSI6NjAwMDAwMDAwMDAwfSwic2NoZW1hX3ZlcnNpb24iOiIxIn0=",
+          "dependencies": [
+            "module.compute.aws_efs_file_system.web-efs",
+            "module.compute.aws_efs_mount_target.web-efs-mt",
+            "module.compute.aws_launch_template.web",
+            "module.compute.aws_lb_target_group.web_tg",
+            "module.network.aws_security_group.efs",
+            "module.network.aws_security_group.web",
+            "module.network.aws_subnet.public",
+            "module.network.aws_vpc.tf-vpc"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.compute",
+      "mode": "managed",
+      "type": "aws_efs_file_system",
+      "name": "web-efs",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:elasticfilesystem:ap-northeast-2:356892573173:file-system/fs-0465fafe2cde5da99",
+            "availability_zone_id": "",
+            "availability_zone_name": "",
+            "creation_token": "my-tf-project-efs",
+            "dns_name": "fs-0465fafe2cde5da99.efs.ap-northeast-2.amazonaws.com",
+            "encrypted": true,
+            "id": "fs-0465fafe2cde5da99",
+            "kms_key_id": "arn:aws:kms:ap-northeast-2:356892573173:key/591dc670-d0c1-427d-b676-90d56f61d4dc",
+            "lifecycle_policy": [],
+            "name": "my-tf-project-efs",
+            "number_of_mount_targets": 2,
+            "owner_id": "356892573173",
+            "performance_mode": "generalPurpose",
+            "protection": [
+              {
+                "replication_overwrite": "ENABLED"
+              }
+            ],
+            "provisioned_throughput_in_mibps": 0,
+            "region": "ap-northeast-2",
+            "size_in_bytes": [
+              {
+                "value": 6144,
+                "value_in_ia": 0,
+                "value_in_standard": 6144
+              }
+            ],
+            "tags": {
+              "Name": "my-tf-project-efs"
+            },
+            "tags_all": {
+              "Name": "my-tf-project-efs"
+            },
+            "throughput_mode": "bursting"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "module": "module.compute",
+      "mode": "managed",
+      "type": "aws_efs_mount_target",
+      "name": "web-efs-mt",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "availability_zone_id": "apne2-az1",
+            "availability_zone_name": "ap-northeast-2a",
+            "dns_name": "fs-0465fafe2cde5da99.efs.ap-northeast-2.amazonaws.com",
+            "file_system_arn": "arn:aws:elasticfilesystem:ap-northeast-2:356892573173:file-system/fs-0465fafe2cde5da99",
+            "file_system_id": "fs-0465fafe2cde5da99",
+            "id": "fsmt-0d494b115e0d5e1d7",
+            "ip_address": "10.0.1.143",
+            "mount_target_dns_name": "ap-northeast-2a.fs-0465fafe2cde5da99.efs.ap-northeast-2.amazonaws.com",
+            "network_interface_id": "eni-02ad1452038adc651",
+            "owner_id": "356892573173",
+            "region": "ap-northeast-2",
+            "security_groups": [
+              "sg-0b7d73ecf276839d3"
+            ],
+            "subnet_id": "subnet-03f182e8f27258d78",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxODAwMDAwMDAwMDAwLCJkZWxldGUiOjYwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "module.compute.aws_efs_file_system.web-efs",
+            "module.network.aws_security_group.efs",
+            "module.network.aws_security_group.web",
+            "module.network.aws_subnet.public",
+            "module.network.aws_vpc.tf-vpc"
+          ]
+        },
+        {
+          "index_key": 1,
+          "schema_version": 0,
+          "attributes": {
+            "availability_zone_id": "apne2-az2",
+            "availability_zone_name": "ap-northeast-2b",
+            "dns_name": "fs-0465fafe2cde5da99.efs.ap-northeast-2.amazonaws.com",
+            "file_system_arn": "arn:aws:elasticfilesystem:ap-northeast-2:356892573173:file-system/fs-0465fafe2cde5da99",
+            "file_system_id": "fs-0465fafe2cde5da99",
+            "id": "fsmt-044e0f9e0a2fd1758",
+            "ip_address": "10.0.2.203",
+            "mount_target_dns_name": "ap-northeast-2b.fs-0465fafe2cde5da99.efs.ap-northeast-2.amazonaws.com",
+            "network_interface_id": "eni-06164fba690d3f995",
+            "owner_id": "356892573173",
+            "region": "ap-northeast-2",
+            "security_groups": [
+              "sg-0b7d73ecf276839d3"
+            ],
+            "subnet_id": "subnet-0270a31b949ab68f7",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxODAwMDAwMDAwMDAwLCJkZWxldGUiOjYwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "module.compute.aws_efs_file_system.web-efs",
+            "module.network.aws_security_group.efs",
+            "module.network.aws_security_group.web",
+            "module.network.aws_subnet.public",
+            "module.network.aws_vpc.tf-vpc"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.compute",
+      "mode": "managed",
+      "type": "aws_launch_template",
+      "name": "web",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-northeast-2:356892573173:launch-template/lt-07896466c71d6ee91",
+            "block_device_mappings": [],
+            "capacity_reservation_specification": [],
+            "cpu_options": [],
+            "credit_specification": [],
+            "default_version": 1,
+            "description": "",
+            "disable_api_stop": false,
+            "disable_api_termination": false,
+            "ebs_optimized": "",
+            "enclave_options": [],
+            "hibernation_options": [],
+            "iam_instance_profile": [],
+            "id": "lt-07896466c71d6ee91",
+            "image_id": "ami-0ae2c887094315bed",
+            "instance_initiated_shutdown_behavior": "",
+            "instance_market_options": [],
+            "instance_requirements": [],
+            "instance_type": "t3.micro",
+            "kernel_id": "",
+            "key_name": "tf_keypair",
+            "latest_version": 1,
+            "license_specification": [],
+            "maintenance_options": [],
+            "metadata_options": [],
+            "monitoring": [],
+            "name": "my-tf-project-launch-template",
+            "name_prefix": "",
+            "network_interfaces": [],
+            "placement": [],
+            "private_dns_name_options": [],
+            "ram_disk_id": "",
+            "region": "ap-northeast-2",
+            "security_group_names": [],
+            "tag_specifications": [],
+            "tags": {
+              "Name": "my-tf-project-web-server"
+            },
+            "tags_all": {
+              "Name": "my-tf-project-web-server"
+            },
+            "update_default_version": null,
+            "user_data": "IyEvYmluL2Jhc2gKeXVtIC15IHVwZGF0ZSAmJiB5dW0gLXkgaW5zdGFsbCBodHRwZCAKeXVtIC15IGluc3RhbGwgYW1hem9uLWVmcy11dGlscwpzeXN0ZW1jdGwgZW5hYmxlIC0tbm93IGh0dHBkCmVjaG8gIjxoMT5XZWxjb21lIHRvIE15IFdlYiBTZXJ2ZXI8L2gxPiIgPiAvdmFyL3d3dy9odG1sL2luZGV4Lmh0bWwKCm1rZGlyIC1wIC9kYXRhL2VmcwplY2hvICJmcy0wNDY1ZmFmZTJjZGU1ZGE5OTovIC9kYXRhL2VmcyBlZnMgZGVmYXVsdHMsX25ldGRldixub2ZhaWwgMCAwIiA+PiAvZXRjL2ZzdGFiCmZvciBpIGluIHsxLi4xMn07IGRvIAogIG1vdW50IC1hICYmIGJyZWFrCiAgZWNobyAiWyQoZGF0ZSldIFJldHJ5ICRpOiBFRlMgbm90IHJlYWR5IHlldCIgPj4gL3Zhci9sb2cvZWZzLW1vdW50LmxvZwogIHNsZWVwIDEwIApkb25lIAoKaWYgbW91bnRwb2ludCAtcSAvZGF0YS9lZnM7IHRoZW4KICBlY2hvICJbJChkYXRlKV0gRUZTIG1vdW50IFN1Y2Nlc3NmdWwiID4+IC92YXIvbG9nL2Vmcy1tb3VudC5sb2cKZWxzZQogIGVjaG8gIlskKGRhdGUpXSBFRlMgbW91bnQgZmFpbCIgPj4gL3Zhci9sb2cvZWZzLW1vdW50LmxvZwpmaQo=",
+            "vpc_security_group_ids": [
+              "sg-005cb71caabd514de"
+            ]
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.compute.aws_efs_file_system.web-efs",
+            "module.compute.aws_efs_mount_target.web-efs-mt",
+            "module.network.aws_security_group.efs",
+            "module.network.aws_security_group.web",
+            "module.network.aws_subnet.public",
+            "module.network.aws_vpc.tf-vpc"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.compute",
+      "mode": "managed",
+      "type": "aws_lb",
+      "name": "web_alb",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "access_logs": [
+              {
+                "bucket": "",
+                "enabled": false,
+                "prefix": ""
+              }
+            ],
+            "arn": "arn:aws:elasticloadbalancing:ap-northeast-2:356892573173:loadbalancer/app/my-tf-project-alb/ad0ad31bdde47883",
+            "arn_suffix": "app/my-tf-project-alb/ad0ad31bdde47883",
+            "client_keep_alive": 3600,
+            "connection_logs": [
+              {
+                "bucket": "",
+                "enabled": false,
+                "prefix": ""
+              }
+            ],
+            "customer_owned_ipv4_pool": "",
+            "desync_mitigation_mode": "defensive",
+            "dns_name": "my-tf-project-alb-284059041.ap-northeast-2.elb.amazonaws.com",
+            "dns_record_client_routing_policy": null,
+            "drop_invalid_header_fields": false,
+            "enable_cross_zone_load_balancing": true,
+            "enable_deletion_protection": false,
+            "enable_http2": true,
+            "enable_tls_version_and_cipher_suite_headers": false,
+            "enable_waf_fail_open": false,
+            "enable_xff_client_port": false,
+            "enable_zonal_shift": false,
+            "enforce_security_group_inbound_rules_on_private_link_traffic": "",
+            "id": "arn:aws:elasticloadbalancing:ap-northeast-2:356892573173:loadbalancer/app/my-tf-project-alb/ad0ad31bdde47883",
+            "idle_timeout": 60,
+            "internal": false,
+            "ip_address_type": "ipv4",
+            "ipam_pools": [],
+            "load_balancer_type": "application",
+            "minimum_load_balancer_capacity": [],
+            "name": "my-tf-project-alb",
+            "name_prefix": "",
+            "preserve_host_header": false,
+            "region": "ap-northeast-2",
+            "secondary_ips_auto_assigned_per_subnet": null,
+            "security_groups": [
+              "sg-005cb71caabd514de"
+            ],
+            "subnet_mapping": [
+              {
+                "allocation_id": "",
+                "ipv6_address": "",
+                "outpost_id": "",
+                "private_ipv4_address": "",
+                "subnet_id": "subnet-0270a31b949ab68f7"
+              },
+              {
+                "allocation_id": "",
+                "ipv6_address": "",
+                "outpost_id": "",
+                "private_ipv4_address": "",
+                "subnet_id": "subnet-03f182e8f27258d78"
+              }
+            ],
+            "subnets": [
+              "subnet-0270a31b949ab68f7",
+              "subnet-03f182e8f27258d78"
+            ],
+            "tags": {
+              "Name": "my-tf-project-alb"
+            },
+            "tags_all": {
+              "Name": "my-tf-project-alb"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-02e13c61a14f816dd",
+            "xff_header_processing_mode": "append",
+            "zone_id": "ZWKZPGTI48KDX"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6NjAwMDAwMDAwMDAwLCJ1cGRhdGUiOjYwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "module.network.aws_security_group.web",
+            "module.network.aws_subnet.public",
+            "module.network.aws_vpc.tf-vpc"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.compute",
+      "mode": "managed",
+      "type": "aws_lb_listener",
+      "name": "http",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "alpn_policy": null,
+            "arn": "arn:aws:elasticloadbalancing:ap-northeast-2:356892573173:listener/app/my-tf-project-alb/ad0ad31bdde47883/9e5ccf6bf7a7282a",
+            "certificate_arn": null,
+            "default_action": [
+              {
+                "authenticate_cognito": [],
+                "authenticate_oidc": [],
+                "fixed_response": [],
+                "forward": [],
+                "order": 1,
+                "redirect": [],
+                "target_group_arn": "arn:aws:elasticloadbalancing:ap-northeast-2:356892573173:targetgroup/my-tf-project-tg/9bcfe1bacf213885",
+                "type": "forward"
+              }
+            ],
+            "id": "arn:aws:elasticloadbalancing:ap-northeast-2:356892573173:listener/app/my-tf-project-alb/ad0ad31bdde47883/9e5ccf6bf7a7282a",
+            "load_balancer_arn": "arn:aws:elasticloadbalancing:ap-northeast-2:356892573173:loadbalancer/app/my-tf-project-alb/ad0ad31bdde47883",
+            "mutual_authentication": [],
+            "port": 80,
+            "protocol": "HTTP",
+            "region": "ap-northeast-2",
+            "routing_http_request_x_amzn_mtls_clientcert_header_name": null,
+            "routing_http_request_x_amzn_mtls_clientcert_issuer_header_name": null,
+            "routing_http_request_x_amzn_mtls_clientcert_leaf_header_name": null,
+            "routing_http_request_x_amzn_mtls_clientcert_serial_number_header_name": null,
+            "routing_http_request_x_amzn_mtls_clientcert_subject_header_name": null,
+            "routing_http_request_x_amzn_mtls_clientcert_validity_header_name": null,
+            "routing_http_request_x_amzn_tls_cipher_suite_header_name": null,
+            "routing_http_request_x_amzn_tls_version_header_name": null,
+            "routing_http_response_access_control_allow_credentials_header_value": "",
+            "routing_http_response_access_control_allow_headers_header_value": "",
+            "routing_http_response_access_control_allow_methods_header_value": "",
+            "routing_http_response_access_control_allow_origin_header_value": "",
+            "routing_http_response_access_control_expose_headers_header_value": "",
+            "routing_http_response_access_control_max_age_header_value": "",
+            "routing_http_response_content_security_policy_header_value": "",
+            "routing_http_response_server_enabled": true,
+            "routing_http_response_strict_transport_security_header_value": "",
+            "routing_http_response_x_content_type_options_header_value": "",
+            "routing_http_response_x_frame_options_header_value": "",
+            "ssl_policy": "",
+            "tags": {},
+            "tags_all": {},
+            "tcp_idle_timeout_seconds": null,
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMDAsInVwZGF0ZSI6MzAwMDAwMDAwMDAwfX0=",
+          "dependencies": [
+            "module.compute.aws_lb.web_alb",
+            "module.compute.aws_lb_target_group.web_tg",
+            "module.network.aws_security_group.web",
+            "module.network.aws_subnet.public",
+            "module.network.aws_vpc.tf-vpc"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.compute",
+      "mode": "managed",
+      "type": "aws_lb_target_group",
+      "name": "web_tg",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:elasticloadbalancing:ap-northeast-2:356892573173:targetgroup/my-tf-project-tg/9bcfe1bacf213885",
+            "arn_suffix": "targetgroup/my-tf-project-tg/9bcfe1bacf213885",
+            "connection_termination": null,
+            "deregistration_delay": "300",
+            "health_check": [
+              {
+                "enabled": true,
+                "healthy_threshold": 2,
+                "interval": 30,
+                "matcher": "200",
+                "path": "/",
+                "port": "traffic-port",
+                "protocol": "HTTP",
+                "timeout": 5,
+                "unhealthy_threshold": 2
+              }
+            ],
+            "id": "arn:aws:elasticloadbalancing:ap-northeast-2:356892573173:targetgroup/my-tf-project-tg/9bcfe1bacf213885",
+            "ip_address_type": "ipv4",
+            "lambda_multi_value_headers_enabled": false,
+            "load_balancer_arns": [
+              "arn:aws:elasticloadbalancing:ap-northeast-2:356892573173:loadbalancer/app/my-tf-project-alb/ad0ad31bdde47883"
+            ],
+            "load_balancing_algorithm_type": "round_robin",
+            "load_balancing_anomaly_mitigation": "off",
+            "load_balancing_cross_zone_enabled": "use_load_balancer_configuration",
+            "name": "my-tf-project-tg",
+            "name_prefix": "",
+            "port": 80,
+            "preserve_client_ip": null,
+            "protocol": "HTTP",
+            "protocol_version": "HTTP1",
+            "proxy_protocol_v2": false,
+            "region": "ap-northeast-2",
+            "slow_start": 0,
+            "stickiness": [
+              {
+                "cookie_duration": 86400,
+                "cookie_name": "",
+                "enabled": false,
+                "type": "lb_cookie"
+              }
+            ],
+            "tags": {
+              "Name": "my-tf-project-tg"
+            },
+            "tags_all": {
+              "Name": "my-tf-project-tg"
+            },
+            "target_failover": [
+              {
+                "on_deregistration": null,
+                "on_unhealthy": null
+              }
+            ],
+            "target_group_health": [
+              {
+                "dns_failover": [
+                  {
+                    "minimum_healthy_targets_count": "1",
+                    "minimum_healthy_targets_percentage": "off"
+                  }
+                ],
+                "unhealthy_state_routing": [
+                  {
+                    "minimum_healthy_targets_count": 1,
+                    "minimum_healthy_targets_percentage": "off"
+                  }
+                ]
+              }
+            ],
+            "target_health_state": [
+              {
+                "enable_unhealthy_connection_termination": null,
+                "unhealthy_draining_interval": null
+              }
+            ],
+            "target_type": "instance",
+            "vpc_id": "vpc-02e13c61a14f816dd"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.network.aws_vpc.tf-vpc"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.network",
+      "mode": "managed",
+      "type": "aws_internet_gateway",
+      "name": "tf-igw",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-northeast-2:356892573173:internet-gateway/igw-0fd915443f89f967e",
+            "id": "igw-0fd915443f89f967e",
+            "owner_id": "356892573173",
+            "region": "ap-northeast-2",
+            "tags": {
+              "Nmae": "{var.project_name}-igw}"
+            },
+            "tags_all": {
+              "Nmae": "{var.project_name}-igw}"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-02e13c61a14f816dd"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "module.network.aws_vpc.tf-vpc"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.network",
+      "mode": "managed",
+      "type": "aws_route_table",
+      "name": "public",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-northeast-2:356892573173:route-table/rtb-03c78c38c9efbd638",
+            "id": "rtb-03c78c38c9efbd638",
+            "owner_id": "356892573173",
+            "propagating_vgws": [],
+            "region": "ap-northeast-2",
+            "route": [
+              {
+                "carrier_gateway_id": "",
+                "cidr_block": "0.0.0.0/0",
+                "core_network_arn": "",
+                "destination_prefix_list_id": "",
+                "egress_only_gateway_id": "",
+                "gateway_id": "igw-0fd915443f89f967e",
+                "ipv6_cidr_block": "",
+                "local_gateway_id": "",
+                "nat_gateway_id": "",
+                "network_interface_id": "",
+                "transit_gateway_id": "",
+                "vpc_endpoint_id": "",
+                "vpc_peering_connection_id": ""
+              }
+            ],
+            "tags": {
+              "Name": "my-tf-project-public-rt"
+            },
+            "tags_all": {
+              "Name": "my-tf-project-public-rt"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-02e13c61a14f816dd"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMDAsImRlbGV0ZSI6MzAwMDAwMDAwMDAwLCJ1cGRhdGUiOjEyMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "module.network.aws_internet_gateway.tf-igw",
+            "module.network.aws_vpc.tf-vpc"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.network",
+      "mode": "managed",
+      "type": "aws_route_table_association",
+      "name": "public",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "gateway_id": "",
+            "id": "rtbassoc-000e7a3b0d0a4b9f7",
+            "region": "ap-northeast-2",
+            "route_table_id": "rtb-03c78c38c9efbd638",
+            "subnet_id": "subnet-03f182e8f27258d78",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMDAsImRlbGV0ZSI6MzAwMDAwMDAwMDAwLCJ1cGRhdGUiOjEyMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "module.network.aws_internet_gateway.tf-igw",
+            "module.network.aws_route_table.public",
+            "module.network.aws_subnet.public",
+            "module.network.aws_vpc.tf-vpc"
+          ]
+        },
+        {
+          "index_key": 1,
+          "schema_version": 0,
+          "attributes": {
+            "gateway_id": "",
+            "id": "rtbassoc-0aa4846505ba1ed41",
+            "region": "ap-northeast-2",
+            "route_table_id": "rtb-03c78c38c9efbd638",
+            "subnet_id": "subnet-0270a31b949ab68f7",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMDAsImRlbGV0ZSI6MzAwMDAwMDAwMDAwLCJ1cGRhdGUiOjEyMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "module.network.aws_internet_gateway.tf-igw",
+            "module.network.aws_route_table.public",
+            "module.network.aws_subnet.public",
+            "module.network.aws_vpc.tf-vpc"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.network",
+      "mode": "managed",
+      "type": "aws_security_group",
+      "name": "efs",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-northeast-2:356892573173:security-group/sg-0b7d73ecf276839d3",
+            "description": "Managed by Terraform",
+            "egress": [
+              {
+                "cidr_blocks": [
+                  "0.0.0.0/0"
+                ],
+                "description": "",
+                "from_port": 0,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "-1",
+                "security_groups": [],
+                "self": false,
+                "to_port": 0
+              }
+            ],
+            "id": "sg-0b7d73ecf276839d3",
+            "ingress": [
+              {
+                "cidr_blocks": [],
+                "description": "",
+                "from_port": 2049,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "tcp",
+                "security_groups": [
+                  "sg-005cb71caabd514de"
+                ],
+                "self": false,
+                "to_port": 2049
+              }
+            ],
+            "name": "terraform-20250922015500124400000003",
+            "name_prefix": "terraform-",
+            "owner_id": "356892573173",
+            "region": "ap-northeast-2",
+            "revoke_rules_on_delete": false,
+            "tags": {
+              "Name": "my-tf-project-efs-sg"
+            },
+            "tags_all": {
+              "Name": "my-tf-project-efs-sg"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-02e13c61a14f816dd"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6OTAwMDAwMDAwMDAwfSwic2NoZW1hX3ZlcnNpb24iOiIxIn0=",
+          "dependencies": [
+            "module.network.aws_security_group.web",
+            "module.network.aws_vpc.tf-vpc"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.network",
+      "mode": "managed",
+      "type": "aws_security_group",
+      "name": "rds",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-northeast-2:356892573173:security-group/sg-095cf644a3c9c92ba",
+            "description": "Managed by Terraform",
+            "egress": [
+              {
+                "cidr_blocks": [
+                  "0.0.0.0/0"
+                ],
+                "description": "",
+                "from_port": 0,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "-1",
+                "security_groups": [],
+                "self": false,
+                "to_port": 0
+              }
+            ],
+            "id": "sg-095cf644a3c9c92ba",
+            "ingress": [
+              {
+                "cidr_blocks": [],
+                "description": "",
+                "from_port": 3306,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "tcp",
+                "security_groups": [
+                  "sg-005cb71caabd514de"
+                ],
+                "self": false,
+                "to_port": 3306
+              }
+            ],
+            "name": "terraform-20250922015500124400000004",
+            "name_prefix": "terraform-",
+            "owner_id": "356892573173",
+            "region": "ap-northeast-2",
+            "revoke_rules_on_delete": false,
+            "tags": {
+              "Name": "my-tf-project-rds-sg"
+            },
+            "tags_all": {
+              "Name": "my-tf-project-rds-sg"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-02e13c61a14f816dd"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6OTAwMDAwMDAwMDAwfSwic2NoZW1hX3ZlcnNpb24iOiIxIn0=",
+          "dependencies": [
+            "module.network.aws_security_group.web",
+            "module.network.aws_vpc.tf-vpc"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.network",
+      "mode": "managed",
+      "type": "aws_security_group",
+      "name": "web",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-northeast-2:356892573173:security-group/sg-005cb71caabd514de",
+            "description": "Managed by Terraform",
+            "egress": [
+              {
+                "cidr_blocks": [
+                  "0.0.0.0/0"
+                ],
+                "description": "",
+                "from_port": 0,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "-1",
+                "security_groups": [],
+                "self": false,
+                "to_port": 0
+              }
+            ],
+            "id": "sg-005cb71caabd514de",
+            "ingress": [
+              {
+                "cidr_blocks": [
+                  "0.0.0.0/0"
+                ],
+                "description": "",
+                "from_port": 443,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "tcp",
+                "security_groups": [],
+                "self": false,
+                "to_port": 443
+              },
+              {
+                "cidr_blocks": [
+                  "0.0.0.0/0"
+                ],
+                "description": "",
+                "from_port": 80,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "tcp",
+                "security_groups": [],
+                "self": false,
+                "to_port": 80
+              },
+              {
+                "cidr_blocks": [
+                  "106.246.242.226/32"
+                ],
+                "description": "",
+                "from_port": 22,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "tcp",
+                "security_groups": [],
+                "self": false,
+                "to_port": 22
+              }
+            ],
+            "name": "terraform-20250922015457552700000001",
+            "name_prefix": "terraform-",
+            "owner_id": "356892573173",
+            "region": "ap-northeast-2",
+            "revoke_rules_on_delete": false,
+            "tags": {
+              "Name": "my-tf-project-web-sg"
+            },
+            "tags_all": {
+              "Name": "my-tf-project-web-sg"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-02e13c61a14f816dd"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6OTAwMDAwMDAwMDAwfSwic2NoZW1hX3ZlcnNpb24iOiIxIn0=",
+          "dependencies": [
+            "module.network.aws_vpc.tf-vpc"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.network",
+      "mode": "managed",
+      "type": "aws_subnet",
+      "name": "private",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-northeast-2:356892573173:subnet/subnet-0144d053e49e328eb",
+            "assign_ipv6_address_on_creation": false,
+            "availability_zone": "ap-northeast-2a",
+            "availability_zone_id": "apne2-az1",
+            "cidr_block": "10.0.101.0/24",
+            "customer_owned_ipv4_pool": "",
+            "enable_dns64": false,
+            "enable_lni_at_device_index": 0,
+            "enable_resource_name_dns_a_record_on_launch": false,
+            "enable_resource_name_dns_aaaa_record_on_launch": false,
+            "id": "subnet-0144d053e49e328eb",
+            "ipv6_cidr_block": "",
+            "ipv6_cidr_block_association_id": "",
+            "ipv6_native": false,
+            "map_customer_owned_ip_on_launch": false,
+            "map_public_ip_on_launch": false,
+            "outpost_arn": "",
+            "owner_id": "356892573173",
+            "private_dns_hostname_type_on_launch": "ip-name",
+            "region": "ap-northeast-2",
+            "tags": {
+              "Name": "my-tf-project-private-subnet-1"
+            },
+            "tags_all": {
+              "Name": "my-tf-project-private-subnet-1"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-02e13c61a14f816dd"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6MTIwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMSJ9",
+          "dependencies": [
+            "module.network.aws_vpc.tf-vpc"
+          ]
+        },
+        {
+          "index_key": 1,
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-northeast-2:356892573173:subnet/subnet-04ca8e10f69271d78",
+            "assign_ipv6_address_on_creation": false,
+            "availability_zone": "ap-northeast-2b",
+            "availability_zone_id": "apne2-az2",
+            "cidr_block": "10.0.102.0/24",
+            "customer_owned_ipv4_pool": "",
+            "enable_dns64": false,
+            "enable_lni_at_device_index": 0,
+            "enable_resource_name_dns_a_record_on_launch": false,
+            "enable_resource_name_dns_aaaa_record_on_launch": false,
+            "id": "subnet-04ca8e10f69271d78",
+            "ipv6_cidr_block": "",
+            "ipv6_cidr_block_association_id": "",
+            "ipv6_native": false,
+            "map_customer_owned_ip_on_launch": false,
+            "map_public_ip_on_launch": false,
+            "outpost_arn": "",
+            "owner_id": "356892573173",
+            "private_dns_hostname_type_on_launch": "ip-name",
+            "region": "ap-northeast-2",
+            "tags": {
+              "Name": "my-tf-project-private-subnet-2"
+            },
+            "tags_all": {
+              "Name": "my-tf-project-private-subnet-2"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-02e13c61a14f816dd"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6MTIwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMSJ9",
+          "dependencies": [
+            "module.network.aws_vpc.tf-vpc"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.network",
+      "mode": "managed",
+      "type": "aws_subnet",
+      "name": "public",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-northeast-2:356892573173:subnet/subnet-03f182e8f27258d78",
+            "assign_ipv6_address_on_creation": false,
+            "availability_zone": "ap-northeast-2a",
+            "availability_zone_id": "apne2-az1",
+            "cidr_block": "10.0.1.0/24",
+            "customer_owned_ipv4_pool": "",
+            "enable_dns64": false,
+            "enable_lni_at_device_index": 0,
+            "enable_resource_name_dns_a_record_on_launch": false,
+            "enable_resource_name_dns_aaaa_record_on_launch": false,
+            "id": "subnet-03f182e8f27258d78",
+            "ipv6_cidr_block": "",
+            "ipv6_cidr_block_association_id": "",
+            "ipv6_native": false,
+            "map_customer_owned_ip_on_launch": false,
+            "map_public_ip_on_launch": true,
+            "outpost_arn": "",
+            "owner_id": "356892573173",
+            "private_dns_hostname_type_on_launch": "ip-name",
+            "region": "ap-northeast-2",
+            "tags": {
+              "Name": "my-tf-project-public-subnet-1"
+            },
+            "tags_all": {
+              "Name": "my-tf-project-public-subnet-1"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-02e13c61a14f816dd"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6MTIwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMSJ9",
+          "dependencies": [
+            "module.network.aws_vpc.tf-vpc"
+          ]
+        },
+        {
+          "index_key": 1,
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-northeast-2:356892573173:subnet/subnet-0270a31b949ab68f7",
+            "assign_ipv6_address_on_creation": false,
+            "availability_zone": "ap-northeast-2b",
+            "availability_zone_id": "apne2-az2",
+            "cidr_block": "10.0.2.0/24",
+            "customer_owned_ipv4_pool": "",
+            "enable_dns64": false,
+            "enable_lni_at_device_index": 0,
+            "enable_resource_name_dns_a_record_on_launch": false,
+            "enable_resource_name_dns_aaaa_record_on_launch": false,
+            "id": "subnet-0270a31b949ab68f7",
+            "ipv6_cidr_block": "",
+            "ipv6_cidr_block_association_id": "",
+            "ipv6_native": false,
+            "map_customer_owned_ip_on_launch": false,
+            "map_public_ip_on_launch": true,
+            "outpost_arn": "",
+            "owner_id": "356892573173",
+            "private_dns_hostname_type_on_launch": "ip-name",
+            "region": "ap-northeast-2",
+            "tags": {
+              "Name": "my-tf-project-public-subnet-2"
+            },
+            "tags_all": {
+              "Name": "my-tf-project-public-subnet-2"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-02e13c61a14f816dd"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6MTIwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMSJ9",
+          "dependencies": [
+            "module.network.aws_vpc.tf-vpc"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.network",
+      "mode": "managed",
+      "type": "aws_vpc",
+      "name": "tf-vpc",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-northeast-2:356892573173:vpc/vpc-02e13c61a14f816dd",
+            "assign_generated_ipv6_cidr_block": false,
+            "cidr_block": "10.0.0.0/16",
+            "default_network_acl_id": "acl-0919121f59db1dc06",
+            "default_route_table_id": "rtb-0522fd22ef910860e",
+            "default_security_group_id": "sg-0615c710b5e9e7a15",
+            "dhcp_options_id": "dopt-0c3bbf4cdb679df8e",
+            "enable_dns_hostnames": true,
+            "enable_dns_support": true,
+            "enable_network_address_usage_metrics": false,
+            "id": "vpc-02e13c61a14f816dd",
+            "instance_tenancy": "default",
+            "ipv4_ipam_pool_id": null,
+            "ipv4_netmask_length": null,
+            "ipv6_association_id": "",
+            "ipv6_cidr_block": "",
+            "ipv6_cidr_block_network_border_group": "",
+            "ipv6_ipam_pool_id": "",
+            "ipv6_netmask_length": 0,
+            "main_route_table_id": "rtb-0522fd22ef910860e",
+            "owner_id": "356892573173",
+            "region": "ap-northeast-2",
+            "tags": {
+              "Name": "my-tf-project-vpc"
+            },
+            "tags_all": {
+              "Name": "my-tf-project-vpc"
+            }
+          },
+          "sensitive_attributes": [],
+          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjEifQ=="
+        }
+      ]
+    },
+    {
+      "module": "module.rds",
+      "mode": "data",
+      "type": "aws_ssm_parameter",
+      "name": "db_password",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:ssm:ap-northeast-2:356892573173:parameter/password",
+            "id": "password",
+            "insecure_value": "",
+            "name": "password",
+            "region": "ap-northeast-2",
+            "type": "SecureString",
+            "value": "terraform",
+            "version": 2,
+            "with_decryption": true
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.rds",
+      "mode": "managed",
+      "type": "aws_db_instance",
+      "name": "tf-db",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 2,
+          "attributes": {
+            "address": "my-tf-project-rds.chexn3gvtuuj.ap-northeast-2.rds.amazonaws.com",
+            "allocated_storage": 20,
+            "allow_major_version_upgrade": null,
+            "apply_immediately": false,
+            "arn": "arn:aws:rds:ap-northeast-2:356892573173:db:my-tf-project-rds",
+            "auto_minor_version_upgrade": true,
+            "availability_zone": "ap-northeast-2b",
+            "backup_retention_period": 0,
+            "backup_target": "region",
+            "backup_window": "13:31-14:01",
+            "blue_green_update": [],
+            "ca_cert_identifier": "rds-ca-rsa2048-g1",
+            "character_set_name": "",
+            "copy_tags_to_snapshot": false,
+            "custom_iam_instance_profile": "",
+            "customer_owned_ip_enabled": false,
+            "database_insights_mode": "standard",
+            "db_name": "terraform",
+            "db_subnet_group_name": "my-tf-project-db-subnetgroup",
+            "dedicated_log_volume": false,
+            "delete_automated_backups": true,
+            "deletion_protection": false,
+            "domain": "",
+            "domain_auth_secret_arn": "",
+            "domain_dns_ips": [],
+            "domain_fqdn": "",
+            "domain_iam_role_name": "",
+            "domain_ou": "",
+            "enabled_cloudwatch_logs_exports": [],
+            "endpoint": "my-tf-project-rds.chexn3gvtuuj.ap-northeast-2.rds.amazonaws.com:3306",
+            "engine": "mysql",
+            "engine_lifecycle_support": "open-source-rds-extended-support",
+            "engine_version": "8.0",
+            "engine_version_actual": "8.0.42",
+            "final_snapshot_identifier": null,
+            "hosted_zone_id": "ZLA2NUCOLGUUR",
+            "iam_database_authentication_enabled": false,
+            "id": "db-UVKKLNWYDITVDLVHAZMFA4IOHE",
+            "identifier": "my-tf-project-rds",
+            "identifier_prefix": "",
+            "instance_class": "db.t3.micro",
+            "iops": 0,
+            "kms_key_id": "",
+            "latest_restorable_time": "",
+            "license_model": "general-public-license",
+            "listener_endpoint": [],
+            "maintenance_window": "mon:18:06-mon:18:36",
+            "manage_master_user_password": null,
+            "master_user_secret": [],
+            "master_user_secret_kms_key_id": null,
+            "max_allocated_storage": 0,
+            "monitoring_interval": 0,
+            "monitoring_role_arn": "",
+            "multi_az": false,
+            "nchar_character_set_name": "",
+            "network_type": "IPV4",
+            "option_group_name": "default:mysql-8-0",
+            "parameter_group_name": "mysql8-parameter-group",
+            "password": "terraform",
+            "password_wo": null,
+            "password_wo_version": null,
+            "performance_insights_enabled": false,
+            "performance_insights_kms_key_id": "",
+            "performance_insights_retention_period": 0,
+            "port": 3306,
+            "publicly_accessible": false,
+            "region": "ap-northeast-2",
+            "replica_mode": "",
+            "replicas": [],
+            "replicate_source_db": "",
+            "resource_id": "db-UVKKLNWYDITVDLVHAZMFA4IOHE",
+            "restore_to_point_in_time": [],
+            "s3_import": [],
+            "skip_final_snapshot": true,
+            "snapshot_identifier": null,
+            "status": "available",
+            "storage_encrypted": false,
+            "storage_throughput": 0,
+            "storage_type": "gp2",
+            "tags": {
+              "Name": "my-tf-project-rds"
+            },
+            "tags_all": {
+              "Name": "my-tf-project-rds"
+            },
+            "timeouts": null,
+            "timezone": "",
+            "upgrade_storage_config": null,
+            "username": "terraform",
+            "vpc_security_group_ids": [
+              "sg-095cf644a3c9c92ba"
+            ]
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "password"
+              }
+            ]
+          ],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMDAwLCJkZWxldGUiOjM2MDAwMDAwMDAwMDAsInVwZGF0ZSI6NDgwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMiJ9",
+          "dependencies": [
+            "module.network.aws_security_group.rds",
+            "module.network.aws_security_group.web",
+            "module.network.aws_subnet.private",
+            "module.network.aws_vpc.tf-vpc",
+            "module.rds.aws_db_parameter_group.mysql8_pg",
+            "module.rds.aws_db_subnet_group.tf-db-subnetgroup",
+            "module.rds.data.aws_ssm_parameter.db_password"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.rds",
+      "mode": "managed",
+      "type": "aws_db_parameter_group",
+      "name": "mysql8_pg",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:rds:ap-northeast-2:356892573173:pg:mysql8-parameter-group",
+            "description": "Managed by Terraform",
+            "family": "mysql8.0",
+            "id": "mysql8-parameter-group",
+            "name": "mysql8-parameter-group",
+            "name_prefix": "",
+            "parameter": [
+              {
+                "apply_method": "immediate",
+                "name": "character_set_server",
+                "value": "utf8mb4"
+              },
+              {
+                "apply_method": "immediate",
+                "name": "collation_server",
+                "value": "utf8mb4_general_ci"
+              },
+              {
+                "apply_method": "immediate",
+                "name": "innodb_flush_log_at_trx_commit",
+                "value": "1"
+              },
+              {
+                "apply_method": "immediate",
+                "name": "max_connections",
+                "value": "200"
+              },
+              {
+                "apply_method": "immediate",
+                "name": "sync_binlog",
+                "value": "1"
+              },
+              {
+                "apply_method": "pending-reboot",
+                "name": "innodb_buffer_pool_size",
+                "value": "134217728"
+              }
+            ],
+            "region": "ap-northeast-2",
+            "skip_destroy": false,
+            "tags": {
+              "Name": "mysql8-custom-parameter-group"
+            },
+            "tags_all": {
+              "Name": "mysql8-custom-parameter-group"
+            }
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "module": "module.rds",
+      "mode": "managed",
+      "type": "aws_db_subnet_group",
+      "name": "tf-db-subnetgroup",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:rds:ap-northeast-2:356892573173:subgrp:my-tf-project-db-subnetgroup",
+            "description": "Managed by Terraform",
+            "id": "my-tf-project-db-subnetgroup",
+            "name": "my-tf-project-db-subnetgroup",
+            "name_prefix": "",
+            "region": "ap-northeast-2",
+            "subnet_ids": [
+              "subnet-0144d053e49e328eb",
+              "subnet-04ca8e10f69271d78"
+            ],
+            "supported_network_types": [
+              "IPV4"
+            ],
+            "tags": {
+              "Name": "my-tf-project-db-subnetgroup"
+            },
+            "tags_all": {
+              "Name": "my-tf-project-db-subnetgroup"
+            },
+            "vpc_id": "vpc-02e13c61a14f816dd"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.network.aws_subnet.private",
+            "module.network.aws_vpc.tf-vpc"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.route53",
+      "mode": "managed",
+      "type": "aws_acm_certificate",
+      "name": "ssl_cert",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].us_east_1",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:acm:us-east-1:356892573173:certificate/6dc0b1a2-46e1-41c6-a893-a56c0248da67",
+            "certificate_authority_arn": "",
+            "certificate_body": null,
+            "certificate_chain": null,
+            "domain_name": "kkangsoju.co.kr",
+            "domain_validation_options": [
+              {
+                "domain_name": "kkangsoju.co.kr",
+                "resource_record_name": "_09ce1ab9e6dc9a33684c867c3aa510b0.kkangsoju.co.kr.",
+                "resource_record_type": "CNAME",
+                "resource_record_value": "_92850e0499188deedaa792e3ce289b65.xlfgrmvvlj.acm-validations.aws."
+              },
+              {
+                "domain_name": "www.kkangsoju.co.kr",
+                "resource_record_name": "_7e1a7f2cd8433d334a3b9de0444188f8.www.kkangsoju.co.kr.",
+                "resource_record_type": "CNAME",
+                "resource_record_value": "_f8f7544a46ea88828b47ceef85c618ae.xlfgrmvvlj.acm-validations.aws."
+              }
+            ],
+            "early_renewal_duration": "",
+            "id": "arn:aws:acm:us-east-1:356892573173:certificate/6dc0b1a2-46e1-41c6-a893-a56c0248da67",
+            "key_algorithm": "RSA_2048",
+            "not_after": "2026-10-21T23:59:59Z",
+            "not_before": "2025-09-22T00:00:00Z",
+            "options": [
+              {
+                "certificate_transparency_logging_preference": "ENABLED",
+                "export": "DISABLED"
+              }
+            ],
+            "pending_renewal": false,
+            "private_key": null,
+            "region": "us-east-1",
+            "renewal_eligibility": "ELIGIBLE",
+            "renewal_summary": [],
+            "status": "ISSUED",
+            "subject_alternative_names": [
+              "kkangsoju.co.kr",
+              "www.kkangsoju.co.kr"
+            ],
+            "tags": {},
+            "tags_all": {},
+            "type": "AMAZON_ISSUED",
+            "validation_emails": [],
+            "validation_method": "DNS",
+            "validation_option": []
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.route53",
+      "mode": "managed",
+      "type": "aws_acm_certificate_validation",
+      "name": "ssl_cert_validation",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].us_east_1",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "certificate_arn": "arn:aws:acm:us-east-1:356892573173:certificate/6dc0b1a2-46e1-41c6-a893-a56c0248da67",
+            "id": "0001-01-01 00:00:00 +0000 UTC",
+            "region": "us-east-1",
+            "timeouts": null,
+            "validation_record_fqdns": [
+              "_09ce1ab9e6dc9a33684c867c3aa510b0.kkangsoju.co.kr",
+              "_7e1a7f2cd8433d334a3b9de0444188f8.www.kkangsoju.co.kr"
+            ]
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo0NTAwMDAwMDAwMDAwfX0=",
+          "dependencies": [
+            "module.route53.aws_acm_certificate.ssl_cert",
+            "module.route53.aws_route53_record.ssl_cert_record",
+            "module.route53.aws_route53_zone.kkangsoju"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.route53",
+      "mode": "managed",
+      "type": "aws_route53_record",
+      "name": "root__domain",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].us_east_1",
+      "instances": [
+        {
+          "schema_version": 2,
+          "attributes": {
+            "alias": [
+              {
+                "evaluate_target_health": false,
+                "name": "d2l09vt7975zhb.cloudfront.net",
+                "zone_id": "Z2FDTNDATAQYW2"
+              }
+            ],
+            "allow_overwrite": null,
+            "cidr_routing_policy": [],
+            "failover_routing_policy": [],
+            "fqdn": "kkangsoju.co.kr",
+            "geolocation_routing_policy": [],
+            "geoproximity_routing_policy": [],
+            "health_check_id": "",
+            "id": "Z03320231YVVP4JXN8JOM_kkangsoju.co.kr_A",
+            "latency_routing_policy": [],
+            "multivalue_answer_routing_policy": false,
+            "name": "kkangsoju.co.kr",
+            "records": [],
+            "set_identifier": "",
+            "timeouts": null,
+            "ttl": 0,
+            "type": "A",
+            "weighted_routing_policy": [],
+            "zone_id": "Z03320231YVVP4JXN8JOM"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxODAwMDAwMDAwMDAwLCJkZWxldGUiOjE4MDAwMDAwMDAwMDAsInVwZGF0ZSI6MTgwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMiJ9",
+          "dependencies": [
+            "module.cloudfront.aws_cloudfront_distribution.tf-cloudfront",
+            "module.compute.aws_lb.web_alb",
+            "module.network.aws_security_group.web",
+            "module.network.aws_subnet.public",
+            "module.network.aws_vpc.tf-vpc",
+            "module.route53.aws_acm_certificate.ssl_cert",
+            "module.route53.aws_route53_zone.kkangsoju",
+            "module.s3.aws_s3_bucket.tf-bucket"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.route53",
+      "mode": "managed",
+      "type": "aws_route53_record",
+      "name": "ssl_cert_record",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].us_east_1",
+      "instances": [
+        {
+          "index_key": "kkangsoju.co.kr",
+          "schema_version": 2,
+          "attributes": {
+            "alias": [],
+            "allow_overwrite": null,
+            "cidr_routing_policy": [],
+            "failover_routing_policy": [],
+            "fqdn": "_09ce1ab9e6dc9a33684c867c3aa510b0.kkangsoju.co.kr",
+            "geolocation_routing_policy": [],
+            "geoproximity_routing_policy": [],
+            "health_check_id": "",
+            "id": "Z03320231YVVP4JXN8JOM__09ce1ab9e6dc9a33684c867c3aa510b0.kkangsoju.co.kr._CNAME",
+            "latency_routing_policy": [],
+            "multivalue_answer_routing_policy": false,
+            "name": "_09ce1ab9e6dc9a33684c867c3aa510b0.kkangsoju.co.kr",
+            "records": [
+              "_92850e0499188deedaa792e3ce289b65.xlfgrmvvlj.acm-validations.aws."
+            ],
+            "set_identifier": "",
+            "timeouts": null,
+            "ttl": 300,
+            "type": "CNAME",
+            "weighted_routing_policy": [],
+            "zone_id": "Z03320231YVVP4JXN8JOM"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxODAwMDAwMDAwMDAwLCJkZWxldGUiOjE4MDAwMDAwMDAwMDAsInVwZGF0ZSI6MTgwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMiJ9",
+          "dependencies": [
+            "module.route53.aws_acm_certificate.ssl_cert",
+            "module.route53.aws_route53_zone.kkangsoju"
+          ]
+        },
+        {
+          "index_key": "www.kkangsoju.co.kr",
+          "schema_version": 2,
+          "attributes": {
+            "alias": [],
+            "allow_overwrite": null,
+            "cidr_routing_policy": [],
+            "failover_routing_policy": [],
+            "fqdn": "_7e1a7f2cd8433d334a3b9de0444188f8.www.kkangsoju.co.kr",
+            "geolocation_routing_policy": [],
+            "geoproximity_routing_policy": [],
+            "health_check_id": "",
+            "id": "Z03320231YVVP4JXN8JOM__7e1a7f2cd8433d334a3b9de0444188f8.www.kkangsoju.co.kr._CNAME",
+            "latency_routing_policy": [],
+            "multivalue_answer_routing_policy": false,
+            "name": "_7e1a7f2cd8433d334a3b9de0444188f8.www.kkangsoju.co.kr",
+            "records": [
+              "_f8f7544a46ea88828b47ceef85c618ae.xlfgrmvvlj.acm-validations.aws."
+            ],
+            "set_identifier": "",
+            "timeouts": null,
+            "ttl": 300,
+            "type": "CNAME",
+            "weighted_routing_policy": [],
+            "zone_id": "Z03320231YVVP4JXN8JOM"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxODAwMDAwMDAwMDAwLCJkZWxldGUiOjE4MDAwMDAwMDAwMDAsInVwZGF0ZSI6MTgwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMiJ9",
+          "dependencies": [
+            "module.route53.aws_acm_certificate.ssl_cert",
+            "module.route53.aws_route53_zone.kkangsoju"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.route53",
+      "mode": "managed",
+      "type": "aws_route53_record",
+      "name": "www_domain",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].us_east_1",
+      "instances": [
+        {
+          "schema_version": 2,
+          "attributes": {
+            "alias": [
+              {
+                "evaluate_target_health": false,
+                "name": "d2l09vt7975zhb.cloudfront.net",
+                "zone_id": "Z2FDTNDATAQYW2"
+              }
+            ],
+            "allow_overwrite": null,
+            "cidr_routing_policy": [],
+            "failover_routing_policy": [],
+            "fqdn": "www.kkangsoju.co.kr",
+            "geolocation_routing_policy": [],
+            "geoproximity_routing_policy": [],
+            "health_check_id": "",
+            "id": "Z03320231YVVP4JXN8JOM_www.kkangsoju.co.kr_A",
+            "latency_routing_policy": [],
+            "multivalue_answer_routing_policy": false,
+            "name": "www.kkangsoju.co.kr",
+            "records": [],
+            "set_identifier": "",
+            "timeouts": null,
+            "ttl": 0,
+            "type": "A",
+            "weighted_routing_policy": [],
+            "zone_id": "Z03320231YVVP4JXN8JOM"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxODAwMDAwMDAwMDAwLCJkZWxldGUiOjE4MDAwMDAwMDAwMDAsInVwZGF0ZSI6MTgwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMiJ9",
+          "dependencies": [
+            "module.cloudfront.aws_cloudfront_distribution.tf-cloudfront",
+            "module.compute.aws_lb.web_alb",
+            "module.network.aws_security_group.web",
+            "module.network.aws_subnet.public",
+            "module.network.aws_vpc.tf-vpc",
+            "module.route53.aws_acm_certificate.ssl_cert",
+            "module.route53.aws_route53_zone.kkangsoju",
+            "module.s3.aws_s3_bucket.tf-bucket"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.route53",
+      "mode": "managed",
+      "type": "aws_route53_zone",
+      "name": "kkangsoju",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].us_east_1",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:route53:::hostedzone/Z03320231YVVP4JXN8JOM",
+            "comment": "Managed by Terraform",
+            "delegation_set_id": "",
+            "force_destroy": false,
+            "id": "Z03320231YVVP4JXN8JOM",
+            "name": "kkangsoju.co.kr",
+            "name_servers": [
+              "ns-1360.awsdns-42.org",
+              "ns-1908.awsdns-46.co.uk",
+              "ns-437.awsdns-54.com",
+              "ns-664.awsdns-19.net"
+            ],
+            "primary_name_server": "ns-664.awsdns-19.net",
+            "tags": {},
+            "tags_all": {},
+            "timeouts": null,
+            "vpc": [],
+            "zone_id": "Z03320231YVVP4JXN8JOM"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxODAwMDAwMDAwMDAwLCJkZWxldGUiOjE4MDAwMDAwMDAwMDAsInVwZGF0ZSI6MTgwMDAwMDAwMDAwMH19"
+        }
+      ]
+    },
+    {
+      "module": "module.s3",
+      "mode": "managed",
+      "type": "aws_s3_bucket",
+      "name": "tf-bucket",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "acceleration_status": "",
+            "acl": null,
+            "arn": "arn:aws:s3:::my-tf-project-rlfrjs3-bucket",
+            "bucket": "my-tf-project-rlfrjs3-bucket",
+            "bucket_domain_name": "my-tf-project-rlfrjs3-bucket.s3.amazonaws.com",
+            "bucket_prefix": "",
+            "bucket_region": "ap-northeast-2",
+            "bucket_regional_domain_name": "my-tf-project-rlfrjs3-bucket.s3.ap-northeast-2.amazonaws.com",
+            "cors_rule": [],
+            "force_destroy": true,
+            "grant": [
+              {
+                "id": "1b8d257795d162ddb49db01ced7c387d1c01a29c312f566eedf0a976a6f39e63",
+                "permissions": [
+                  "FULL_CONTROL"
+                ],
+                "type": "CanonicalUser",
+                "uri": ""
+              },
+              {
+                "id": "c4c1ede66af53448b93c283ce9448c4ba468c9432aa01d700d3878632f77d2d0",
+                "permissions": [
+                  "FULL_CONTROL"
+                ],
+                "type": "CanonicalUser",
+                "uri": ""
+              }
+            ],
+            "hosted_zone_id": "Z3W03O7B5YMIYP",
+            "id": "my-tf-project-rlfrjs3-bucket",
+            "lifecycle_rule": [],
+            "logging": [],
+            "object_lock_configuration": [],
+            "object_lock_enabled": false,
+            "policy": "{\"Statement\":[{\"Action\":\"s3:PutObject\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"cloudfront.amazonaws.com\"},\"Resource\":\"arn:aws:s3:::my-tf-project-rlfrjs3-bucket/*\",\"Sid\":\"AllowCloudFrontLogging\"}],\"Version\":\"2012-10-17\"}",
+            "region": "ap-northeast-2",
+            "replication_configuration": [],
+            "request_payer": "BucketOwner",
+            "server_side_encryption_configuration": [
+              {
+                "rule": [
+                  {
+                    "apply_server_side_encryption_by_default": [
+                      {
+                        "kms_master_key_id": "",
+                        "sse_algorithm": "AES256"
+                      }
+                    ],
+                    "bucket_key_enabled": false
+                  }
+                ]
+              }
+            ],
+            "tags": {
+              "Name": "my-tf-project--bucket"
+            },
+            "tags_all": {
+              "Name": "my-tf-project--bucket"
+            },
+            "timeouts": null,
+            "versioning": [
+              {
+                "enabled": false,
+                "mfa_delete": false
+              }
+            ],
+            "website": [],
+            "website_domain": null,
+            "website_endpoint": null
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjM2MDAwMDAwMDAwMDAsInJlYWQiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH19"
+        }
+      ]
+    },
+    {
+      "module": "module.s3",
+      "mode": "managed",
+      "type": "aws_s3_bucket_ownership_controls",
+      "name": "tf-bucket-ownership",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "bucket": "my-tf-project-rlfrjs3-bucket",
+            "id": "my-tf-project-rlfrjs3-bucket",
+            "region": "ap-northeast-2",
+            "rule": [
+              {
+                "object_ownership": "ObjectWriter"
+              }
+            ]
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.s3.aws_s3_bucket.tf-bucket"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.s3",
+      "mode": "managed",
+      "type": "aws_s3_bucket_policy",
+      "name": "tf-bucket-policy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "bucket": "my-tf-project-rlfrjs3-bucket",
+            "id": "my-tf-project-rlfrjs3-bucket",
+            "policy": "{\"Statement\":[{\"Action\":\"s3:PutObject\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"cloudfront.amazonaws.com\"},\"Resource\":\"arn:aws:s3:::my-tf-project-rlfrjs3-bucket/*\",\"Sid\":\"AllowCloudFrontLogging\"}],\"Version\":\"2012-10-17\"}",
+            "region": "ap-northeast-2"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.s3.aws_s3_bucket.tf-bucket"
+          ]
+        }
+      ]
+    }
+  ],
+  "check_results": null
+}

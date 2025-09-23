@@ -1,6 +1,17 @@
+terraform { 
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = ">= 5.0"
+    }
+  }
+}
+
+
+
 ###<Route53에서 호스팅영역 생성>
-resource "aws_route53_zone" "kkangsoju" {
-  name = var.domain_name
+resource "aws_route53_zone" "hosting_zone" {
+  name = var.domain_name  
 }
 
 
@@ -21,12 +32,12 @@ resource "aws_route53_record" "ssl_cert_record" {
   for_each = {
     for dvo in aws_acm_certificate.ssl_cert.domain_validation_options : dvo.domain_name => { 
       name = dvo.resource_record_name             #검증을 위한 레코드 이름
-      type = dvo.resource_record_type             #검증을 위한 레코드 유형
-      record = dvo.resource_record_value          #검증을 위한 레코드 값
+      type = dvo.resource_record_type			 
+      record = dvo.resource_record_value
     }
   }
 #위에서 받아온 레코드 내 도메인에 적용해서 인증하기
-zone_id = aws_route53_zone.kkangsoju.zone_id
+zone_id = aws_route53_zone.hosting_zone.zone_id
 name = each.value.name
 type = each.value.type
 records = [each.value.record]
@@ -47,7 +58,7 @@ resource "aws_acm_certificate_validation" "ssl_cert_validation" {
 
 ###<DNS 레코드에 cloudfront 배포 레코드 설정하기>
 resource "aws_route53_record" "root__domain" {   #대포도메인 레코드 설정
-  zone_id = aws_route53_zone.kkangsoju.zone_id
+  zone_id = aws_route53_zone.hosting_zone.zone_id
   name = var.domain_name
   type = "A"
   alias {
@@ -58,7 +69,7 @@ resource "aws_route53_record" "root__domain" {   #대포도메인 레코드 설�
 }
 
 resource "aws_route53_record" "www_domain" {  #www 서브도메인 레코드 설정
-  zone_id = aws_route53_zone.kkangsoju.zone_id
+  zone_id = aws_route53_zone.hosting_zone.zone_id
   name = "www.${var.domain_name}"
   type = "A"
   alias {

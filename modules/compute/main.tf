@@ -128,6 +128,6 @@ resource "aws_lb_listener" "http" {
 
 
 
-# 트래픽-> ALB -> 리스너-> ALB 타겟그룹=ASG 타겟그룹  즉, ASG의 타겟그룹을 ALB 타겟그룹으로 설정
-# ALB 리스너는 http 80 트래픽 통신만 받아서 처리 
+# 트래픽-> ALB -> 리스너-> ALB 타겟그룹=ASG 타겟그룹  즉, ALB의 타겟그룹과 ASG의 타겟그룹이 동일
+# ALB 리스너는 http 80 트래픽 통신만 받아서 처리 (https 443 통신은 클라와 cloudfront 간의 통신만)
 

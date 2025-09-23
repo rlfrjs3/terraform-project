@@ -1,0 +1,44 @@
+{
+  "version": 4,
+  "terraform_version": "1.5.5",
+  "serial": 1382,
+  "lineage": "149df90c-c4a1-99ca-a047-c0177f4bcfe7",
+  "outputs": {},
+  "resources": [
+    {
+      "module": "module.route53",
+      "mode": "managed",
+      "type": "aws_route53_zone",
+      "name": "kkangsoju",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].us_east_1",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:route53:::hostedzone/Z03320231YVVP4JXN8JOM",
+            "comment": "Managed by Terraform",
+            "delegation_set_id": "",
+            "force_destroy": false,
+            "id": "Z03320231YVVP4JXN8JOM",
+            "name": "kkangsoju.co.kr",
+            "name_servers": [
+              "ns-1360.awsdns-42.org",
+              "ns-1908.awsdns-46.co.uk",
+              "ns-437.awsdns-54.com",
+              "ns-664.awsdns-19.net"
+            ],
+            "primary_name_server": "ns-664.awsdns-19.net",
+            "tags": {},
+            "tags_all": {},
+            "timeouts": null,
+            "vpc": [],
+            "zone_id": "Z03320231YVVP4JXN8JOM"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxODAwMDAwMDAwMDAwLCJkZWxldGUiOjE4MDAwMDAwMDAwMDAsInVwZGF0ZSI6MTgwMDAwMDAwMDAwMH19"
+        }
+      ]
+    }
+  ],
+  "check_results": null
+}

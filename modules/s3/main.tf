@@ -10,7 +10,7 @@ resource "aws_s3_bucket" "tf-bucket" {
 resource "aws_s3_bucket_ownership_controls" "tf-bucket-ownership" {
   bucket = aws_s3_bucket.tf-bucket.id
   rule {
-    object_ownership = "ObjectWriter"    #버킷에 업르드하는 주체가 객체의 소유자가 됨(cloudfront가 S3에 로깅할 때 ACL 문제로 접근 실패하는 것을 방지
+    object_ownership = "ObjectWriter"    #버킷에 업르드하는 주체가 객체의 소유자가 됨(cloudfront가 S3에 로깅할 때 ACL 문제로 접근 실패하는 것을 방지)
   }
 }
 
