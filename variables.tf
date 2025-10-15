@@ -14,4 +14,3 @@ variable "key_name" { type = string }
 #route53
 variable "domain_name" { type = string } 
 
-

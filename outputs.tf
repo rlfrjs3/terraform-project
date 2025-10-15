@@ -19,6 +19,3 @@ output "efs_dns_name" {
 }
 
 
-
-
-

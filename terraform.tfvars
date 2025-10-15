@@ -19,4 +19,3 @@ key_name = "tf_keypair"
 domain_name = "kkangsoju.co.kr" 
 
 
-

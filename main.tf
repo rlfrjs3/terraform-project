@@ -73,7 +73,6 @@ module "route53" {
   providers = { aws = aws.us_east_1 }   #provider.alias 리전 지정
   domain_name = var.domain_name
   cloudfront_domain_name = module.cloudfront.cloudfront_domain_name
-  cloudfront_hosted_zone_id = module.cloudfront.cloudfront_hosted_zone_id
 }
 
 
@@ -82,6 +81,6 @@ module "route53" {
 
 
 
-#! 해당 테라폼 apply할 때마다 개인 도메인 NS 레코드를 콘솔에서 확인해서 수정해줘야 함 
-#->호스팅영역 생성/삭제할 때마다, NS 레코드가 바뀌기 때문에
-#->안바꿔주면 ACM SSL 인증서 DNS 인증이 안됨
+
+
+
