@@ -70,7 +70,7 @@ module "cloudfront" {
 
 module "route53" {
   source = "./modules/route53"
-  providers = { aws = aws.us_east_1 }   #provider.alias 리전 지정
+  providers = { aws = aws.us_east_1 }   #provider.alias 리전 지정 (Cloudfront에 ACM SSL 인증서를 적용할 때, us-east-1 리전의 인증서만 참조 가능하기 때문에)
   domain_name = var.domain_name
   cloudfront_domain_name = module.cloudfront.cloudfront_domain_name
 }
