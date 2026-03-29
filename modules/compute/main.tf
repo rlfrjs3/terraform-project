@@ -94,7 +94,7 @@ resource "aws_lb_target_group" "web_tg" {
   vpc_id = var.vpc_id
 
   health_check {  
-    path = "/"       #루트 경로로 HTTP 체
+    path = "/"       #루트 경로로 HTTP 체크
     interval = 30    #30초마다 체크
     timeout = 5      #응답대기 5초
     healthy_threshold = 2    #2번 연속 성공해야 정상으로 판단
