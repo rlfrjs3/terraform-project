@@ -6,26 +6,42 @@ on:
       - main
 
 jobs:
-  terraform:
-    name: "테라폼 plan 작업"
-    runs-on: ubuntu-latest 
-
+  debug:
+    runs-on: ubuntu-latest
     steps:
-    - name: 1. 코드 가져오기
-      uses: actions/checkout@v4
+      - name: test
+        run: |
+          echo "hello, test success"
+          date
 
-    - name: 2. 테라폼 설치 
-      uses: hashicorp/setup-terraform@v3
 
-    - name: 3. AWS 권한 설정 
-      uses: aws-action/configure-aws-credentials@v3
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_STEPHANE }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_STEPHANE }}
-        aws-region: ap-northeast-2
 
-    - name: 4. terraform init
-      run: terraform init
- 
-    - name: 5. terraform plan
-      run: terraform plan
+
+
+
+
+
+
+#  terraform:
+#    name: "테라폼 plan 작업"
+#    runs-on: ubuntu-latest 
+#
+#    steps:
+#    - name: 1. 코드 가져오기
+#      uses: actions/checkout@v4
+#
+#    - name: 2. 테라폼 설치 
+#      uses: hashicorp/setup-terraform@v3
+#
+#    - name: 3. AWS 권한 설정 
+#      uses: aws-actions/configure-aws-credentials@v3
+#      with:
+#        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_STEPHANE }}
+#        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_STEPHANE }}
+#        aws-region: ap-northeast-2
+#
+#    - name: 4. terraform init
+#      run: terraform init
+# 
+#    - name: 5. terraform plan
+#      run: terraform plan
