@@ -16,6 +16,7 @@ module "compute" {
   project_name = var.project_name
   vpc_id = module.network.vpc_id
   public_subnet_ids = module.network.public_subnet_ids
+  private_subnet_ids = module.network.private_subnet_ids
   web_sg_id = module.network.web_sg_id  
   efs_sg_id = module.network.efs_sg_id  
   ami_id = var.ami_id     

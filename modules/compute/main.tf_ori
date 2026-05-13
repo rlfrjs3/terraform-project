@@ -8,9 +8,9 @@ resource "aws_efs_file_system" "web-efs" {
 
 #EFS 마운트타겟 생성 - 각 퍼블릭 서브넷마다
 resource "aws_efs_mount_target" "web-efs-mt" { 
-  count = length(var.private_subnet_ids)  #프라이빗 서브넷마다 생성
+  count = length(var.public_subnet_ids)  #퍼블릭 서브넷마다 생성
   file_system_id = aws_efs_file_system.web-efs.id   
-  subnet_id = element(var.private_subnet_ids, count.index)
+  subnet_id = element(var.public_subnet_ids, count.index)
   security_groups = [var.efs_sg_id]
 }
 
@@ -59,9 +59,7 @@ resource "aws_autoscaling_group" "web_asg" {
   desired_capacity = 4  #평상시 갯수
   max_size = 5   #최대 갯수
   min_size = 4   #최소 갯수
-  vpc_zone_identifier = var.private_subnet_ids  #프라이빗 서브넷에만 생성
-  health_check_type   = "ELB"     #웹서버 80포트 응답 없으면 삭제하고 재생성
-  health_check_grace_period = 300       
+  vpc_zone_identifier = var.public_subnet_ids  #퍼블릭 서브넷에만 생성
   launch_template { 
     id = aws_launch_template.web.id
     version = "$Latest"
