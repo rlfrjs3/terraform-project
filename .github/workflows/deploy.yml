@@ -9,10 +9,11 @@ jobs:
   debug:
     runs-on: ubuntu-latest
     steps:
-      - name: test
-        run: |
-          echo "hello, test success"
-          date
+      - name: 1. 코드 가져오기
+        uses: actions/checkout@v4
+      
+      - name: 2. 확인
+        run: echo "success"
 
 
 
